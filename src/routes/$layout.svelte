@@ -1,10 +1,12 @@
+<!-- src/routers/$layout.svelte -->
 <script>
-  import { onMount } from 'svelte';
-	import '../app.css';
-	
-	let b;
-	onMount(()=>b.focus());
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
+  
+  import Keydown from "svelte-keydown";
 </script>
-<button bind:this={b}>focused</button>
-<slot />
+<Keydown on:ArrowRight={() => goto(`${Number($page.params.slug)+1}`) } />
 
+<button on:click={()=>goto(`${Number($page.params.slug)+1}`)}>goto({Number($page.params.slug)+1})</button>
+or press RightArrow
+<slot />

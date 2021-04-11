@@ -1,13 +1,8 @@
-<!-- [slug].svelte -->
+<!-- src/routers/[slug].svelte -->
 <svelte:head><title>Lost focus - Sveltekit Routers</title></svelte:head>
 <script>
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-		
-  import Keydown from "svelte-keydown";
+  import { page } from '$app/stores';
+  
 </script>
-<Keydown on:ArrowRight={() => goto(`${Number($page.params.slug)+1}`) } />
 <br>
-<button on:click={()=>goto(`${Number($page.params.slug)+1}`)}>goto({Number($page.params.slug)+1})</button>
-or press RightArrow
-
+page {$page.params.slug}

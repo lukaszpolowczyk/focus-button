@@ -13,13 +13,14 @@ Open url: [http://localhost:3000/1]
 ## Problem
 
 1. Refresh page
-2. the "focused" button are focused
-3. Press right arrow on keyboard
-4. the "focused" button loses focus
+2. Press `Tab key` on the keyboard
+3. The button are focused
+4. Press `Right Arrow` on the keyboard
+5. The button loses focus
+ 
+**Question:** How to keep focus?
 
-**Question:** how to keep focus?
-
-GIF (I refresh the page and press the right arrow):
+GIF with this:
 
 ![lost-focus](lost-focus.gif "lost focus - sveltekit")
 
@@ -30,25 +31,23 @@ The code looks like this:
 <svelte:head><title>Lost focus - Sveltekit Routers</title></svelte:head>
 <script>
   import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
-   
-  import Keydown from "svelte-keydown";
+  
 </script>
-<Keydown on:ArrowRight={() => goto(`${Number($page.params.slug)+1}`) } />
 <br>
-<button on:click={()=>goto(`${Number($page.params.slug)+1}`)}>goto({Number($page.params.slug)+1})</button>
-or press RightArrow
+page {$page.params.slug}
 ```
 　
 ```svelte
 <!-- src/routers/$layout.svelte -->
 <script>
-  import { onMount } from 'svelte';
-  import '../app.css';
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
   
-  let b;
-  onMount(()=>b.focus());
+  import Keydown from "svelte-keydown";
 </script>
-<button bind:this={b}>focused</button>
+<Keydown on:ArrowRight={() => goto(`${Number($page.params.slug)+1}`) } />
+
+<button on:click={()=>goto(`${Number($page.params.slug)+1}`)}>goto({Number($page.params.slug)+1})</button>
+or press RightArrow
 <slot />
 ```
