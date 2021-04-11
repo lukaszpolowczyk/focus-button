@@ -18,7 +18,7 @@ Open url: [http://localhost:3000/1]
 4. Press `Right Arrow` on the keyboard
 5. The button loses focus
  
-**Question:** How to keep focus?
+**Question:** How do I keep focus without using `element.focus()` or anything like that?
 
 GIF with this:
 
