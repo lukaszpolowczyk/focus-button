@@ -19,6 +19,10 @@ Open url: [http://localhost:3000/1]
 
 **Question:** how to keep focus?
 
+GIF (I refresh the page and press the right arrow):
+
+![lost-focus](lost-focus.gif "lost focus - sveltekit")
+
 The code looks like this:
 
 ```svelte
